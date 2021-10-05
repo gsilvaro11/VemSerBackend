@@ -1,6 +1,6 @@
 package com.dbc.Exercicio;
 
-public class Exercicio01 {
+public class Exercicio00 {
     public static void main(String[] args){
         var varUm = 10;
         var varDois = 10.50f;
