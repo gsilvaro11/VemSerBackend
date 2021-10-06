@@ -13,7 +13,7 @@ public class Exercicio03 {
         float valorPago = scanner.nextFloat();
 
         if(valorPago < valorConsumido){
-            System.out.printf("O valor pago deve ser maior ou igual ao valor consumido, faltam %s reais!"
+            System.err.printf("O valor pago deve ser maior ou igual ao valor consumido, faltam %s reais!"
             , valorConsumido - valorPago);
 
         }else {
