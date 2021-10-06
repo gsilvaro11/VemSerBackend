@@ -16,7 +16,7 @@ public class ArraysMatizesRepeticoes {
         matrizNumeros[1][1] = 67;
 
         int[] valores = {2,3,5,10,20};
-        for(int index = 0; index < valores.length; index++){
+        for (int index = 0; index < valores.length; index++){
             System.out.println(valores[index]);
         }
 
