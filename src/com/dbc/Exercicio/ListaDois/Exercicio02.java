@@ -14,7 +14,7 @@ número a ser encontrado é maior do que você digitou.
 public class Exercicio02 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        final int numeroMaquina = 2;
+        final int numeroMaquina = 8;
 
         boolean auxiliar = true;
         while (auxiliar){
@@ -33,11 +33,13 @@ public class Exercicio02 {
                             System.out.println(aux);
                         }
                     }catch (Exception e){
-                        System.err.println("ERRO, tente novamente!");
+                        System.err.println("ERRO");
+                        break;
                     }
                 }
             }catch (Exception e){
-                System.err.println("ERRO, tente novamente!");
+                System.err.println("ERRO");
+                break;
 
             }
         }

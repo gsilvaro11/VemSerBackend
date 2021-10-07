@@ -32,7 +32,7 @@ public class Exercicio08 {
                 numeros[y][3] = media;
                 mediaFinal +=  (media/ 5 ) /5 ;
             }
-            System.out.printf("Média do %s aluno = %s\n", numeros[i][0], numeros[i][3]);
+            System.out.printf("Média do %s° aluno = %s\n", (int) numeros[i][0], numeros[i][3]);
         }
         System.out.printf("Média das notas finais = %.2f", mediaFinal);
 

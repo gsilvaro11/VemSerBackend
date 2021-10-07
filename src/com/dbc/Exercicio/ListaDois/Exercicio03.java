@@ -26,7 +26,7 @@ public class Exercicio03 {
             listaAlturaJogador[aux] = alturaJogador;
             aux += 1;
 
-            System.out.println("Deseja sair? digite sair, ou enter para continuar! ");
+            System.out.println("Deseja sair? digite 'sair', ou 'ok' para continuar! ");
             String saindo = scanner.next();
 
             if(saindo.equals("sair")){

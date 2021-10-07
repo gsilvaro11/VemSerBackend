@@ -7,7 +7,7 @@ public class Exercicio07 {
         int[][] matriz = {
                 {2,5,6,11},
                 {12,10,22,2},
-                {2,3,8,72},
+                {2,13,8,72},
                 {6,4,9,90}
         };
 
@@ -17,7 +17,7 @@ public class Exercicio07 {
                 int verifica = matriz[i][y] > 10 ? auxiliar += 1 : auxiliar;
             }
         }
-        System.out.printf("Existem %s numeros 10 no vetor", auxiliar);
+        System.out.printf("Existem %s numeros maiores que 10 no vetor", auxiliar);
 
     }
 }

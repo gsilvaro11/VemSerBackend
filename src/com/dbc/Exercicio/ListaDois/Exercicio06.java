@@ -16,7 +16,7 @@ public class Exercicio06 {
 //        System.out.println("Digite um numero: ");
 //        int numeroEscolhido = scanner.nextInt();
 
-        int numeroEscolhido = 0;
+        int numeroEscolhido = 3;
         int auxiliar = 0;
         for(int valor : numeros){
             if(valor == numeroEscolhido){
