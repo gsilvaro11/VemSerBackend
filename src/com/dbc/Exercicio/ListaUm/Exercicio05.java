@@ -1,4 +1,4 @@
-package com.dbc.Exercicio;
+package com.dbc.Exercicio.ListaUm;
 
 import java.util.Scanner;
 
