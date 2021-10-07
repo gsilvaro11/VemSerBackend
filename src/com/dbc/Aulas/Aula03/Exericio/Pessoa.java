@@ -15,8 +15,7 @@ public class Pessoa {
     }
 
     public boolean ehMaiorDeIdade(){
-        boolean retorna = idade > 18 ? true : false;
-        return retorna;
+        return idade >= 18;
     }
 
     public void mandarWhatsApp(Pessoa pessoa, String mensagem){
