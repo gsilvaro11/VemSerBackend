@@ -14,20 +14,15 @@ public class ContaCorrente {
 
     public boolean sacarSaldo(double saque){
         if(saque <= saldo && saque > 0){
-            double saqueSaldoCheque = saldo - saque;
-            saldo = saqueSaldoCheque;
+            saldo -= saque;
             return true;
         }
         return false;
     }
-    public boolean retonarSaldoComChequeEspecial(double saldoCheque){
-        double saqueMaisCheque = saldoCheque + saldo;
-        return true;
-    }
+
     public boolean depositarSaldo(double deposito){
         if(deposito > 0){
-            double depositoSaldo = saldo + deposito;
-            saldo = depositoSaldo;
+            saldo += deposito;
             return true;
         }
         return false;
@@ -35,12 +30,15 @@ public class ContaCorrente {
 
     public boolean transferirEntreContas(ContaCorrente corrente, double valor){
         if(valor > 0 && valor <= saldo){
-            corrente.saldo  += valor;
+            corrente.saldo += valor;
             saldo -= valor;
             return true;
         }
         return false;
     }
 
+    public double retornarSaldoMaisCheque(){
+        return saldo + chequeEspecial;
+    }
 
 }

@@ -57,20 +57,20 @@ public class Main {
         contaCorrenteLaura.cliente = clienteLaura; // instanciei o cliente em conta corrente Cliente
         //**********    FIM Dados Cliente Laura    **********
 
-
+ /*
         //**********    Imprime contatos    **********
-//        clienteGuilherme.imprimirContatos();
-//        clienteLaura.imprimirContatos();
+        clienteGuilherme.imprimirContatos();
+        clienteLaura.imprimirContatos();
 
-        //**********    Imprime Endereco    **********
-//        clienteGuilherme.imprimirEnderecos();
-//        System.out.println("************************");
-//        clienteLaura.imprimirEnderecos();
+        **********    Imprime Endereco    **********
+        clienteGuilherme.imprimirEnderecos();
+        System.out.println("************************");
+        clienteLaura.imprimirEnderecos();
 
-        //**********    Imprime Cliente    **********
-//        clienteGuilherme.imprimirCliente();
-//        System.out.println("\n************************");
-//        clienteLaura.imprimirCliente();
+        **********    Imprime Cliente    **********
+        clienteGuilherme.imprimirCliente();
+        System.out.println("\n************************");
+        clienteLaura.imprimirCliente();*/
 
 
         contaCorrenteGuilherme.imprimirContaCorrente();
