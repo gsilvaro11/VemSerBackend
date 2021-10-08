@@ -1,4 +1,4 @@
-package com.dbc.Aulas;
+package com.dbc.Exercicio;
 
 import java.util.Arrays;
 

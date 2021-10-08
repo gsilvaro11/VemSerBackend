@@ -7,14 +7,12 @@ public class Main {
         guilherme.idade = 22;
         guilherme.telefone.numero = "51985234767";
 
-        Pessoa maicon = new Pessoa();
-        maicon.nome =  "Maicon";
-        maicon.idade = 30;
+
+        Pessoa laura = new Pessoa("Laura", 22);
 
 
-
-        guilherme.conversar(maicon, " Vai estudar ");
-        int deferencaIdade = guilherme.diferencaIdade(maicon);
+        guilherme.conversar(laura, " Vai estudar ");
+        int deferencaIdade = guilherme.diferencaIdade(laura);
         System.out.printf("Diferença de idade é %s", deferencaIdade);
     }
 }

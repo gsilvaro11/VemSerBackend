@@ -1,6 +1,4 @@
-package com.dbc.Aulas;
-
-import org.w3c.dom.ls.LSOutput;
+package com.dbc.Aulas.Aula02;
 
 public class VariaveisEConstantes {
     public static void main(String[] args){

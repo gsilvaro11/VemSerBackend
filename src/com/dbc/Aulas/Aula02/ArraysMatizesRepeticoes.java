@@ -1,4 +1,4 @@
-package com.dbc.Aulas;
+package com.dbc.Aulas.Aula02;
 
 public class ArraysMatizesRepeticoes {
     public static void main(String[] args) {
