@@ -1,10 +1,24 @@
 package com.dbc.Exercicio.ContCorrente;
 
 public class Cliente {
-    String nomeCliente;
-    String cpfCliente;
-    Contato[] contato = new Contato[2];
+    private String nomeCliente;
+    private String cpfCliente;
+    Contato[] contato = {};
     Endereco[] endereco = new Endereco[2];
+
+    Cliente(){}
+
+    Cliente(String nomeCliente, String cpfCliente){
+        this.nomeCliente = nomeCliente;
+        this.cpfCliente = cpfCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente){
+        this.nomeCliente = nomeCliente;
+    }
+    public String getNomeCliente(){
+        return this.nomeCliente;
+    }
 
     public void imprimirContatos(){
         for(int i = 0; i < contato.length; i++){
@@ -16,7 +30,7 @@ public class Cliente {
         }
     }
     public void imprimirEnderecos(){
-        for(int i = 0; i < 1; i++){
+        for(int i = 0; i < contato.length; i++){
             if(endereco[i] != null) {
                 System.out.println(endereco[i].tipoEndereco);
                 System.out.println(endereco[i].logradouro);
@@ -29,6 +43,6 @@ public class Cliente {
         }
     }
     public void imprimirCliente(){
-        System.out.printf("Nome: %s\nCPF: %s", nomeCliente, cpfCliente);
+        System.out.printf("Nome: %s\nCPF: %s", this.nomeCliente, this.cpfCliente);
     }
 }
