@@ -1,4 +1,4 @@
-package com.dbc.Exercicio.OutrosExercicios;
+package com.dbc.Exercicio.ExerciciosAulas;
 
 public class Exercicio00 {
     public static void main(String[] args){

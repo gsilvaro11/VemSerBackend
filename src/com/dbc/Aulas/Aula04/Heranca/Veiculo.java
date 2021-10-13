@@ -1,9 +1,15 @@
 package com.dbc.Aulas.Aula04.Heranca;
 
 public abstract class Veiculo {
-    private int quilometragem;
     private String nome;
+    private int quilometragem;
 
+
+    Veiculo(){}
+    Veiculo(String nome, int quilometragem){
+        this.nome = nome;
+        this.quilometragem = quilometragem;
+    }
 
     public int getQuilometragem(){
         return quilometragem;

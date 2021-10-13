@@ -7,7 +7,8 @@ public class Carro extends Veiculo{
 
     public Carro(){}
 
-    public Carro(String nome,String modeloMotor, int potencia, int velocidadeMaxima){
+    public Carro(String nome, int quilometragem ,String modeloMotor, int potencia, int velocidadeMaxima){
+        super(nome, quilometragem);
         this.modeloMotor = modeloMotor;
         this.potencia = potencia;
         this.velocidadeMaxima = velocidadeMaxima;

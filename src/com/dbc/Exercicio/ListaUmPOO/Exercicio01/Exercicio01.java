@@ -19,8 +19,8 @@ public class Exercicio01 {
                 ,this.nome,this.idade,this.cidade,this.estado);
     }
 
-    public String getNome(){
-        return this.nome;
+    public String getNome(String nome){
+        return this.nome = nome;
     }
 
     public int getIdade(){
