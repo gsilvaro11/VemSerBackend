@@ -3,6 +3,8 @@ package com.dbc.Exercicio.HomeworkPOO2;
 public class ContaPoupanca extends Conta implements Imprimir{
     private static final Double JUROS_MENSAL = 1.01;
 
+
+    ContaPoupanca(){}
     public ContaPoupanca(Cliente cliente, String numeroConta, String agencia, Double saldo) {
         super(cliente, numeroConta, agencia, saldo);
     }

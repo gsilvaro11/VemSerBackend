@@ -3,7 +3,7 @@ package com.dbc.Exercicio.HomeworkPOO2;
 public class ContaCorrente extends Conta implements Imprimir{
     private Double chequeEspecial;
 
-
+    ContaCorrente(){}
     ContaCorrente(Cliente cliente, String numeroConta, String agencia, Double saldo, Double chequeEspecial){
         super(cliente,numeroConta,agencia,saldo);
         this.chequeEspecial = chequeEspecial;

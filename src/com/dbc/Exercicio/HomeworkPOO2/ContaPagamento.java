@@ -3,6 +3,7 @@ package com.dbc.Exercicio.HomeworkPOO2;
 public class ContaPagamento extends Conta implements Imprimir{
     static final Double TAXA_SAQUE = 4.25d;
 
+    ContaPagamento(){}
     public ContaPagamento(Cliente cliente, String numeroConta, String agencia, Double saldo) {
         super(cliente, numeroConta, agencia, saldo);
     }

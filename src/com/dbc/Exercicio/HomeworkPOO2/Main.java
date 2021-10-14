@@ -6,6 +6,15 @@ public class Main {
         Endereco guiEndereco = new Endereco(1, "casa", 125, "fundos", "91420612",
                 "Porto Alegre", "Brasil");
 
+//        Endereco guiEndereco = new Endereco();
+//        guiEndereco.setTipoEndereco(1);
+//        guiEndereco.setLogradouro("casa");
+//        guiEndereco.setNumeroEndereco(125);
+//        guiEndereco.setComplementoEndereco("fundos");
+//        guiEndereco.setCepEndereco("91420612");
+
+
+
         Cliente guiCliente = new Cliente("Guilherme", "84622665623");
         ContaCorrente guiCorrente = new ContaCorrente(guiCliente, "100", "0010",
                 1200.0d, 500d);
@@ -24,6 +33,7 @@ public class Main {
 
 
 
+
         //**********************     Programa    **********************
 
         guiPagamento.imprimir();
@@ -31,10 +41,10 @@ public class Main {
         lauraPoupanca.imprimir();
 
         System.out.println("\n");
-//        guiPagamento.sacar(300);
-//        lauraPoupanca.sacar(300);
-//        guiPagamento.depositar(6000);
-//        lauraPoupanca.depositar(2000);
+        guiPagamento.sacar(300);
+        lauraPoupanca.sacar(300);
+        guiPagamento.depositar(6000);
+        lauraPoupanca.depositar(2000);
 
         lauraPoupanca.transferir(guiPagamento, 360d);
 
@@ -45,37 +55,5 @@ public class Main {
         lauraPoupanca.imprimir();
 
 
-    }
-//    static public ContaCorrente guiContaCorrente(){
-//        Contato guiContato = new Contato("Descricao", "998523476", 1);
-//        Endereco guiEndereco = new Endereco(1, "casa", 125, "fundos", "91420612",
-//                "Porto Alegre", "Brasil");
-//
-//        Cliente guiCliente = new Cliente("Guilherme", "84622665623");
-//        ContaCorrente guiCorrente = new ContaCorrente(guiCliente, "100", "0010",
-//                1200.0d, 500d);
-//
-//        //          Guilherme informações       //
-//        guiCliente.setContato(guiContato);
-//        guiCliente.setEndereco(guiEndereco);
-//        //
-//
-//        return guiCorrente;
-//    }
-//    static public ContaPagamento guiContaPagamento(){
-//        Contato guiContato = new Contato("Descricao", "998523476", 1);
-//        Endereco guiEndereco = new Endereco(1, "casa", 125, "fundos", "91420612",
-//                "Porto Alegre", "Brasil");
-//
-//        Cliente guiCliente = new Cliente("Guilherme", "84622665623");
-//        ContaPagamento guiPagamento = new ContaPagamento(guiCliente, "3600", "0110",
-//                780d);
-//
-//        //          Guilherme informações       //
-//        guiCliente.setContato(guiContato);
-//        guiCliente.setEndereco(guiEndereco);
-        //
-//
-//        return guiPagamento;
-//    }
+    }//
 }
