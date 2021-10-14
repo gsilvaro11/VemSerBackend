@@ -54,11 +54,25 @@ public abstract class Conta implements Movimentacao{
 
     @Override
     public boolean depositar(double depositar) {
+        if(depositar < 10000d){
+            setSaldo(getSaldo() + depositar);
+            System.out.println("Deposito realizado com sucesso!");
+            return true;
+        }
+        System.err.println("Limite de depósito de R$9.999,99");
         return false;
     }
 
     @Override
     public boolean transferir(Conta conta, Double valor) {
+        if(this.getSaldo() >= valor){
+            setSaldo(getSaldo() - valor);
+            conta.setSaldo(conta.getSaldo() + valor);
+            System.out.println("Transferencia concluida!");
+            return true;
+        }
+        System.err.println("Saque cancelado, valor inválido");
         return false;
     }
+
 }

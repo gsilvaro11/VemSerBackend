@@ -8,17 +8,6 @@ public class ContaPagamento extends Conta implements Imprimir{
     }
 
     @Override
-    public boolean depositar(double depositar) {
-        if(depositar < 10000d){
-            setSaldo(getSaldo() + depositar);
-            System.out.println("Deposito realizado com sucesso!");
-            return true;
-        }
-        System.out.println("Limite de depósito de R$9.999,99");
-        return false;
-    }
-
-    @Override
     public boolean sacar(double saque) {
         if (getSaldo() > 0 && (getSaldo() - TAXA_SAQUE) >= saque){
             setSaldo((getSaldo() - TAXA_SAQUE) - saque);
