@@ -9,7 +9,7 @@ public class Main {
 
         System.out.println("Digite a palavra");
         String palavra = scanner.next();
-        
+
         tradutorPalavra.tradutor("love");
     }
 }
