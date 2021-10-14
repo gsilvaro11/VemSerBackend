@@ -1,7 +1,7 @@
 package com.dbc.Exercicio.ListaUmPOO.Exercicio06;
 
 public class Tradutor {
-    private String lista[] = {"CACHORRO", "DOG", "TEMPO", "TIME",
+    private static final String lista[] = {"CACHORRO", "DOG", "TEMPO", "TIME",
             "AMOR", "LOVE", "CIDADE", "CITY", "FELIZ", "HAPPY"};
 
     public void tradutor(String palavra){
