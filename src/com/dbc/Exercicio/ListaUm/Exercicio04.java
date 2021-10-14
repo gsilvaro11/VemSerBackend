@@ -2,7 +2,8 @@ package com.dbc.Exercicio.ListaUm;
 
 import java.util.Scanner;
 
-public class Exercicio04 {
+public class
+Exercicio04 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String[] estados = {"Rio Grande do Sul", "São Paulo", "Rio Janeiro",};
