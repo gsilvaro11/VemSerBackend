@@ -5,6 +5,14 @@ public class Pessoa {
     int idade;
     Telefone telefone;
 
+    public Pessoa(){}
+
+    public Pessoa(String nome, int idade){
+        this.nome = nome;
+        this.idade = idade;
+
+    }
+
     public void conversar(Pessoa pessoa, String mensagem){
         System.out.println(nome + " conversou " + mensagem + pessoa.nome);
     }
