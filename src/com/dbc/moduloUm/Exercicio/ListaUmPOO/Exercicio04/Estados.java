@@ -3,7 +3,7 @@ package com.dbc.Exercicio.ListaUmPOO.Exercicio04;
 public class Estados {
     private String[] estados = {"Rio Grande do Sul", "São Paulo", "Rio Janeiro"};
     private String[][] cidades = {
-            {"Porto Alegre", "Viamão"},
+            {"Porto Alegre", "Viamão", "Canoas"},
             {"São Paulo", "Campinas"},
             {"Rio de janeiro", "Niterói"}
     };
