@@ -1,19 +1,14 @@
-package com.dbc;
+package com.dbc.moduloUm;
 
-import java.util.Arrays;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class Main {
+
+public class Main{
     public static void main(String[] args) {
-        System.out.println("Vem Ser - DBC");
 
-        int[] numeros = {11,5,3};
-        Arrays.sort(numeros, 0, 3);
-        for (int valor : numeros){
-            System.out.println(valor);
-        }
-
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String data = dtf.format(LocalDateTime.now());
+        System.out.println("yyyy/MM/dd HH:mm:ss-> " + data);
     }
-
 }
-
-
