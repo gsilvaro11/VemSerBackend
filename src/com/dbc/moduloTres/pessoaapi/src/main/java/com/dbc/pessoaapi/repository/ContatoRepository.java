@@ -18,10 +18,11 @@ public class ContatoRepository {
     }
 
 
-    public Contato create(Contato contato) {
+    public Contato create(Integer id, Contato contato) {
         contato.setIdContato(COUNTERCONTATO.incrementAndGet());
-        contato.setIdPessoa(COUNTERPESSOA.incrementAndGet());
+        contato.setIdPessoa(id);
         listaContato.add(contato);
+
         return contato;
     }
 

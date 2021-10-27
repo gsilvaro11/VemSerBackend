@@ -12,8 +12,8 @@ public class ContatoService {
         contatoRepository = new ContatoRepository();
     }
 
-    public Contato create(Contato contato){
-        return contatoRepository.create(contato);
+    public Contato create(Integer id, Contato contato) {
+        return contatoRepository.create(id, contato);
     }
 
     public List<Contato> list(){

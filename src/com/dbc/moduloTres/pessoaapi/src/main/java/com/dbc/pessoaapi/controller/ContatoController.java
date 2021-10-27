@@ -32,9 +32,9 @@ public class ContatoController {
         return contatoService.listByNumero(numero);
     }
 
-    @PostMapping
-    public Contato create(@RequestBody Contato contato) {
-        return contatoService.create(contato);
+    @PostMapping("/{idPessoa}")
+    public Contato create(@PathVariable("idPessoa") Integer id, @RequestBody Contato contato) {
+        return contatoService.create(id, contato);
     }
 
     @DeleteMapping("/{idContato}")
@@ -43,8 +43,7 @@ public class ContatoController {
     }
 
     @PutMapping("/{idContato}")
-    public Contato update(@PathVariable("idContato") Integer id,
-                         @RequestBody Contato contatoAtualizar) throws Exception {
+    public Contato update(@PathVariable("idContato") Integer id, @RequestBody Contato contatoAtualizar) throws Exception {
         return contatoService.update(id, contatoAtualizar);
     }
 
