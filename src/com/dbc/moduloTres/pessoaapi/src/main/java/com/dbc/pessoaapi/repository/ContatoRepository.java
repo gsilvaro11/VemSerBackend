@@ -1,15 +1,18 @@
 package com.dbc.pessoaapi.repository;
 
 import com.dbc.pessoaapi.entity.Contato;
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+@Repository
 public class ContatoRepository {
     private static List<Contato> listaContato = new ArrayList<>();
-    private AtomicInteger COUNTERPESSOA = new AtomicInteger();
-    private AtomicInteger COUNTERCONTATO = new AtomicInteger();
+    private final AtomicInteger COUNTERPESSOA = new AtomicInteger();
+    private final AtomicInteger COUNTERCONTATO = new AtomicInteger();
 
     public ContatoRepository() {
         listaContato.add(new Contato(COUNTERCONTATO.incrementAndGet(), COUNTERPESSOA.incrementAndGet(), "1", "101", "teste"));
@@ -18,9 +21,8 @@ public class ContatoRepository {
     }
 
 
-    public Contato create(Integer id, Contato contato) {
+    public Contato create(Contato contato) {
         contato.setIdContato(COUNTERCONTATO.incrementAndGet());
-        contato.setIdPessoa(id);
         listaContato.add(contato);
 
         return contato;

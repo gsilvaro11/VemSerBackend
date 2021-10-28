@@ -1,6 +1,7 @@
 package com.dbc.pessoaapi.repository;
 
 import com.dbc.pessoaapi.entity.Pessoa;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+@Repository
 public class PessoaRepository {
     private static List<Pessoa> listaPessoas = new ArrayList<>();
     private AtomicInteger COUNTER = new AtomicInteger();
@@ -21,7 +23,7 @@ public class PessoaRepository {
         listaPessoas.add(new Pessoa(COUNTER.incrementAndGet() /*3*/, "Marina Oliveira", LocalDate.parse("30/03/1970", formatter), "12345678912"));
     }
 
-    public Pessoa create(Pessoa pessoa) {
+    public Pessoa create(Pessoa pessoa) throws Exception{
         pessoa.setIdPessoa(COUNTER.incrementAndGet());
         listaPessoas.add(pessoa);
         return pessoa;
