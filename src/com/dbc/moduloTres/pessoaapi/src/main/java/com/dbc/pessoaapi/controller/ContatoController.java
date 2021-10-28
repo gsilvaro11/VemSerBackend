@@ -1,15 +1,19 @@
 package com.dbc.pessoaapi.controller;
 
 import com.dbc.pessoaapi.entity.Contato;
+import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/contato")
+@Validated
 public class ContatoController {
 
     @Autowired
@@ -31,7 +35,7 @@ public class ContatoController {
     }
 
     @PostMapping("/{idPessoa}")
-    public Contato create(@PathVariable("idPessoa") Integer id, @RequestBody Contato contato) {
+    public Contato create(@Valid @PathVariable("idPessoa") Integer id, @Valid @RequestBody Contato contato) throws RegraDeNegocioException {
         return contatoService.create(id, contato);
     }
 
@@ -41,7 +45,7 @@ public class ContatoController {
     }
 
     @PutMapping("/{idContato}")
-    public Contato update(@PathVariable("idContato") Integer id, @RequestBody Contato contatoAtualizar) throws Exception {
+    public Contato update(@Valid @PathVariable("idContato") Integer id, @Valid @RequestBody Contato contatoAtualizar) throws Exception {
         return contatoService.update(id, contatoAtualizar);
     }
 

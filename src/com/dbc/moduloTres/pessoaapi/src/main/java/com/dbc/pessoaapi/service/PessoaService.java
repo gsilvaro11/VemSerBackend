@@ -34,6 +34,7 @@ public class PessoaService {
 
     public Pessoa update(Integer id,
                          Pessoa pessoaAtualizar) throws Exception {
+
         return pessoaRepository.update(id, pessoaAtualizar);
     }
 

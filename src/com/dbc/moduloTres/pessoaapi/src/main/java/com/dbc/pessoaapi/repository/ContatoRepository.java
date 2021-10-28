@@ -1,6 +1,7 @@
 package com.dbc.pessoaapi.repository;
 
 import com.dbc.pessoaapi.entity.Contato;
+import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -21,11 +22,14 @@ public class ContatoRepository {
     }
 
 
-    public Contato create(Contato contato) {
-        contato.setIdContato(COUNTERCONTATO.incrementAndGet());
-        listaContato.add(contato);
-
-        return contato;
+    public Contato create(Integer id, Contato contatoNovo) throws RegraDeNegocioException{
+        contatoNovo = listaContato.stream()
+                .filter(x -> x.getIdPessoa().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
+        contatoNovo.setIdContato(COUNTERCONTATO.incrementAndGet());
+        listaContato.add(contatoNovo);
+        return contatoNovo;
     }
 
     public List<Contato> list() {
@@ -36,7 +40,7 @@ public class ContatoRepository {
         Contato contatoRecuperado = listaContato.stream()
                 .filter(contato -> contato.getIdPessoa().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
         contatoRecuperado.setIdContato(contatoAtualizar.getIdPessoa());
         contatoRecuperado.setIdContato(id);
         contatoRecuperado.setTipoContato(contatoAtualizar.getTipoContato());
@@ -49,7 +53,7 @@ public class ContatoRepository {
         Contato contatoRecuperada = listaContato.stream()
                 .filter(contato -> contato.getIdContato().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
         listaContato.remove(contatoRecuperada);
     }
 

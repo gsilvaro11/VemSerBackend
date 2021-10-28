@@ -1,10 +1,25 @@
 package com.dbc.pessoaapi.entity;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Contato {
     private Integer idContato;
     private Integer idPessoa;
+
+    @NotNull(message = "Não pode ser null")
+    @NotBlank(message = "Não pode ser branco")
     private String tipoContato;
+
+    @NotNull(message = "Não pode ser null")
+    @NotBlank(message = "Não pode ser branco")
+    @Size(max = 13)
     private String numero;
+
+    @NotNull
+    @NotBlank
+    @Size(max = 100, min = 10)
     private String descricao;
 
     public Contato() {

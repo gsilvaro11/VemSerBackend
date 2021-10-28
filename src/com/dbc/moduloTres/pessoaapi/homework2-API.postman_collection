@@ -14,13 +14,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/contato/",
+							"raw": "{{url}}/contato",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"contato",
-								""
+								"contato"
 							]
 						}
 					},
@@ -32,16 +31,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://my-application-teste.herokuapp.com/contato/1",
-							"protocol": "https",
+							"raw": "{{url}}/contato/bynumber?numero=102",
 							"host": [
-								"my-application-teste",
-								"herokuapp",
-								"com"
+								"{{url}}"
 							],
 							"path": [
 								"contato",
-								"1"
+								"bynumber"
+							],
+							"query": [
+								{
+									"key": "numero",
+									"value": "102"
+								}
 							]
 						}
 					},
@@ -54,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \r\n        \"idPessoa\": 1,\r\n        \"tipoContato\": \"COMERCIAL\",\r\n        \"numero\": \"51999552742\",\r\n        \"descricao\": \"whatsapp\"\r\n}",
+							"raw": "{                \r\n        \"tipoContato\": \"2\",\r\n        \"numero\": \"106\",\r\n        \"descricao\": \"novo contato para o id um\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -62,12 +64,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://my-application-teste.herokuapp.com/contato/1",
-							"protocol": "https",
+							"raw": "{{url}}/contato/1",
 							"host": [
-								"my-application-teste",
-								"herokuapp",
-								"com"
+								"{{url}}"
 							],
 							"path": [
 								"contato",
@@ -78,13 +77,13 @@
 					"response": []
 				},
 				{
-					"name": "PUT / CONTATO /id",
+					"name": "PUT / CONTATO /ID",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"idContato\": 6,\r\n        \"idPessoa\": 1,\r\n        \"tipoContato\": \"COMERCIAL\",\r\n        \"numero\": \"51999552742\",\r\n        \"descricao\": \"Telegram\"\r\n    }",
+							"raw": "{        \r\n        \"idPessoa\": 2,\r\n        \"tipoContato\": \"2\",\r\n        \"numero\": \"102\",\r\n        \"descricao\": \"ATUALIZANDO CONTATO 2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -92,16 +91,13 @@
 							}
 						},
 						"url": {
-							"raw": "https://my-application-teste.herokuapp.com/contato/1",
-							"protocol": "https",
+							"raw": "{{url}}/contato/2",
 							"host": [
-								"my-application-teste",
-								"herokuapp",
-								"com"
+								"{{url}}"
 							],
 							"path": [
 								"contato",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -113,12 +109,9 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://my-application-teste.herokuapp.com/contato/1",
-							"protocol": "https",
+							"raw": "{{url}}/contato/1",
 							"host": [
-								"my-application-teste",
-								"herokuapp",
-								"com"
+								"{{url}}"
 							],
 							"path": [
 								"contato",
@@ -164,7 +157,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Brunno Zonatto\",\r\n    \"dataNascimento\": \"1992-06-30\",\r\n    \"cpf\": \"12345678910\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Guilherme Silva\",\r\n    \"dataNascimento\": \"1999-08-24\",\r\n    \"cpf\": \"84691697004\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -172,12 +165,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://my-application-teste.herokuapp.com/pessoa",
-							"protocol": "https",
+							"raw": "{{url}}/pessoa",
 							"host": [
-								"my-application-teste",
-								"herokuapp",
-								"com"
+								"{{url}}"
 							],
 							"path": [
 								"pessoa"
@@ -201,16 +191,13 @@
 							}
 						},
 						"url": {
-							"raw": "https://my-application-teste.herokuapp.com/pessoa/1",
-							"protocol": "https",
+							"raw": "{{url}}/pessoa/9",
 							"host": [
-								"my-application-teste",
-								"herokuapp",
-								"com"
+								"{{url}}"
 							],
 							"path": [
 								"pessoa",
-								"1"
+								"9"
 							]
 						}
 					},
@@ -222,16 +209,145 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://my-application-teste.herokuapp.com/pessoa/2",
-							"protocol": "https",
+							"raw": "{{url}}/pessoa/",
 							"host": [
-								"my-application-teste",
-								"herokuapp",
-								"com"
+								"{{url}}"
 							],
 							"path": [
 								"pessoa",
-								"2"
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ENDEREÇO",
+			"item": [
+				{
+					"name": "GET / ENDERECO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/endereco",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET / ENDERECO / ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/endereco/1/endereco",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"endereco",
+								"1",
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET / ENDEREDO / ID / PESSOA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/endereco/1/pessoa",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"endereco",
+								"1",
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE / ENDERECO / ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/endereco/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"endereco",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT / ENDERECO / ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{        \r\n        \"idPessoa\": 1,\r\n        \"tipo\": \"2\",\r\n        \"logradouro\": \"longradouro\",\r\n        \"numero\": 105,\r\n        \"complemento\": \"null\",\r\n        \"cep\": \"91420612\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"SP\",\r\n        \"pais\": \"Brasil\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/endereco/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"endereco",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST / ENDERECO / ID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{        \r\n        \"tipo\": \"2\",\r\n        \"logradouro\": \"longradouro\",\r\n        \"numero\": 105,\r\n        \"complemento\": \"null\",\r\n        \"cep\": \"91420612\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"SP\",\r\n        \"pais\": \"Brasil\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/endereco/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"endereco",
+								"1"
 							]
 						}
 					},

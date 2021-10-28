@@ -3,6 +3,7 @@ package com.dbc.pessoaapi.repository;
 
 import com.dbc.pessoaapi.entity.Contato;
 import com.dbc.pessoaapi.entity.Endereco;
+import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +57,7 @@ public class EnderecoRepository {
         Endereco enderecoRecuperado = listaEndereco.stream()
                 .filter(contato -> contato.getIdEndereco().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
         enderecoRecuperado.setIdEndereco(id);
         enderecoRecuperado.setIdPessoa(enderecoAtualizado.getIdPessoa());
         enderecoRecuperado.setTipo(enderecoAtualizado.getTipo());
@@ -74,7 +75,7 @@ public class EnderecoRepository {
         Endereco enderecoRecuperado = listaEndereco.stream()
                 .filter(endereco -> endereco.getIdEndereco().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Contato não encontrado"));
+                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
         listaEndereco.remove(enderecoRecuperado);
     }
 
