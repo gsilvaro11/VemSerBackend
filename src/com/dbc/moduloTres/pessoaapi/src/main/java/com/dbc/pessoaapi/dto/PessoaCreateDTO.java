@@ -16,6 +16,10 @@ public class PessoaCreateDTO {
     private String nome;
 
     @NotNull(message = "Não pode ser nulo")
+    @NotBlank(message = "Não pode estar em branco")
+    private String email;
+
+    @NotNull(message = "Não pode ser nulo")
     @Past()
     private LocalDate dataNascimento;
 

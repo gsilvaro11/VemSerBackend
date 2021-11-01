@@ -4,7 +4,9 @@ import com.dbc.pessoaapi.dto.PessoaCreateDTO;
 import com.dbc.pessoaapi.dto.PessoaDTO;
 import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
+import com.dbc.pessoaapi.service.EmailService;
 import com.dbc.pessoaapi.service.PessoaService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PessoaController {
     private final PessoaService pessoaService;
+    private final EmailService emailService;
+    private final ObjectMapper objectMapper;
 
     @PostMapping
     public PessoaDTO create(@Valid @RequestBody PessoaCreateDTO pessoaCreateDTO) throws Exception{
@@ -60,6 +64,7 @@ public class PessoaController {
     public void delete(@PathVariable("idPessoa") Integer id) throws Exception {
         log.info("Deletando pessoa");
         pessoaService.delete(id);
+
         log.info("Deletado com sucesso");
     }
 }

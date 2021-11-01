@@ -20,12 +20,14 @@ import java.util.stream.Collectors;
 public class PessoaService {
     private final PessoaRepository pessoaRepository;
     private final ObjectMapper objectMapper;
+    private final EmailService emailService;
 
     public PessoaDTO create(PessoaCreateDTO pessoaCreateDTO) throws Exception {
         PessoaEntity pessoaEntity = objectMapper.convertValue(pessoaCreateDTO, PessoaEntity.class);
         PessoaEntity pessoaCriada = pessoaRepository.create(pessoaEntity);
         PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaCriada, PessoaDTO.class);
 
+        emailService.enviarEmailComTemplate(pessoaDTO, "criada");
         return pessoaDTO;
     }
 
@@ -39,11 +41,18 @@ public class PessoaService {
         PessoaEntity entity = objectMapper.convertValue(pessoaCreateDTO, PessoaEntity.class);
         PessoaEntity atualizado = pessoaRepository.update(id, entity);
         PessoaDTO dto = objectMapper.convertValue(atualizado, PessoaDTO.class);
+
+        emailService.enviarEmailComTemplate(dto, "atualizada");
         return dto;
     }
 
     public void delete(Integer id) throws Exception {
-         pessoaRepository.delete(id);
+        PessoaEntity pessoaDeletada = pessoaRepository.listById(id);
+        pessoaRepository.delete(id);
+
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaDeletada, PessoaDTO.class);
+        emailService.enviarEmailComTemplateDelete(pessoaDTO);
+
     }
 
     public List<PessoaDTO> listByName(String nome) {
