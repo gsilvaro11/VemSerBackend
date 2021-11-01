@@ -1,9 +1,12 @@
 package com.dbc.pessoaapi.controller;
 
-import com.dbc.pessoaapi.entity.Contato;
+import com.dbc.pessoaapi.dto.ContatoDTO;
+import com.dbc.pessoaapi.entity.ContatoCreateDTO;
+import com.dbc.pessoaapi.entity.ContatoEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.service.ContatoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,39 +17,43 @@ import java.util.List;
 @RestController
 @RequestMapping("/contato")
 @Validated
+@Slf4j
+@RequiredArgsConstructor
 public class ContatoController {
-
-    @Autowired
-    private ContatoService contatoService;
-
-    @GetMapping("/teste")
-    public String teste(){
-        return "testando contato";
-    }
+    private final ContatoService contatoService;
 
     @GetMapping
-    public List<Contato> list() {
+    public List<ContatoDTO> list() {
         return contatoService.list();
     }
 
     @GetMapping("/bynumber")
-    public List<Contato> listByNumero(@RequestParam("numero") String numero){
+    public List<ContatoDTO> listByNumero(@RequestParam("numero") String numero){
         return contatoService.listByNumero(numero);
     }
 
     @PostMapping("/{idPessoa}")
-    public Contato create(@Valid @PathVariable("idPessoa") Integer id, @Valid @RequestBody Contato contato) throws RegraDeNegocioException {
-        return contatoService.create(id, contato);
+    public ContatoDTO create(@Valid @PathVariable("idPessoa") Integer id,
+                             @Valid @RequestBody ContatoCreateDTO contatoCreateDTO) throws RegraDeNegocioException {
+        log.info("Criando contato");
+        ContatoDTO contatoDTO = contatoService.create(id, contatoCreateDTO);
+        log.info("Contato criado com sucesso");
+        return contatoDTO;
     }
 
     @DeleteMapping("/{idContato}")
     public void delete(@PathVariable("idContato") Integer id) throws Exception {
+        log.info("Deletando contato");
         contatoService.delete(id);
+        log.info("Deletado com sucesso");
     }
 
     @PutMapping("/{idContato}")
-    public Contato update(@Valid @PathVariable("idContato") Integer id, @Valid @RequestBody Contato contatoAtualizar) throws Exception {
-        return contatoService.update(id, contatoAtualizar);
+    public ContatoDTO update(@Valid @PathVariable("idContato") Integer id,
+                             @Valid @RequestBody ContatoCreateDTO contatoDtoAtulizado) throws Exception {
+        log.info("Atualizando contato");
+        ContatoDTO contatoDTO = contatoService.update(id, contatoDtoAtulizado);
+        log.info("Atualizado com sucesso");
+        return contatoDTO;
     }
-
 }

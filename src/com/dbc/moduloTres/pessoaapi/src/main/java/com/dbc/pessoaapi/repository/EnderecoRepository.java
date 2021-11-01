@@ -1,8 +1,7 @@
 package com.dbc.pessoaapi.repository;
 
 
-import com.dbc.pessoaapi.entity.Contato;
-import com.dbc.pessoaapi.entity.Endereco;
+import com.dbc.pessoaapi.entity.EnderecoEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
@@ -12,71 +11,71 @@ import java.util.stream.Collectors;
 
 @Repository
 public class EnderecoRepository {
-    private static List<Endereco> listaEndereco = new ArrayList<>();
+    private static List<EnderecoEntity> listaEnderecoEntity = new ArrayList<>();
     private final AtomicInteger COUNTERPESSOA = new AtomicInteger();
     private final AtomicInteger COUNTERENDERECO = new AtomicInteger();
 
     public EnderecoRepository() {
-        listaEndereco.add(new Endereco(COUNTERENDERECO.incrementAndGet(), COUNTERPESSOA.incrementAndGet(),
+        listaEnderecoEntity.add(new EnderecoEntity(COUNTERENDERECO.incrementAndGet(), COUNTERPESSOA.incrementAndGet(),
                 "1", "longradouro", 105,
                 "null", "91420612", "Porto Alegre", "RS", "Brasil"));
 
-        listaEndereco.add(new Endereco(COUNTERENDERECO.incrementAndGet(), COUNTERPESSOA.incrementAndGet(),
+        listaEnderecoEntity.add(new EnderecoEntity(COUNTERENDERECO.incrementAndGet(), COUNTERPESSOA.incrementAndGet(),
                 "1", "longradouro", 105,
                 "null", "91420612", "Porto Alegre", "RS", "Brasil"));
 
-        listaEndereco.add(new Endereco(COUNTERENDERECO.incrementAndGet(), COUNTERPESSOA.incrementAndGet(),
+        listaEnderecoEntity.add(new EnderecoEntity(COUNTERENDERECO.incrementAndGet(), COUNTERPESSOA.incrementAndGet(),
                 "1", "longradouro", 105,
                 "null", "91420612", "Porto Alegre", "RS", "Brasil"));
     }
 
-    public List<Endereco> list() {
-        return listaEndereco;
+    public List<EnderecoEntity> list() {
+        return listaEnderecoEntity;
     }
 
-    public Endereco listByEndereco(Integer id) throws Exception{
-        return listaEndereco.stream()
-                .filter(endereco -> endereco.getIdEndereco().equals(id))
+    public EnderecoEntity listByEndereco(Integer id) throws Exception{
+        return listaEnderecoEntity.stream()
+                .filter(enderecoEntity -> enderecoEntity.getIdEndereco().equals(id))
                 .findFirst().orElseThrow(() -> new Exception("Erro"));
 
     }
 
-    public List<Endereco> listByPessoa(Integer idPessoa){
-        return listaEndereco.stream()
-                .filter(endereco -> endereco.getIdPessoa().equals(idPessoa))
+    public List<EnderecoEntity> listByPessoa(Integer idPessoa){
+        return listaEnderecoEntity.stream()
+                .filter(enderecoEntity -> enderecoEntity.getIdPessoa().equals(idPessoa))
                 .collect(Collectors.toList());
     }
 
-    public Endereco create(Endereco endereco) {
-        endereco.setIdEndereco(COUNTERENDERECO.incrementAndGet());
-        listaEndereco.add(endereco);
-        return endereco;
+    public EnderecoEntity create(EnderecoEntity enderecoEntity) {
+        enderecoEntity.setIdEndereco(COUNTERENDERECO.incrementAndGet());
+        listaEnderecoEntity.add(enderecoEntity);
+        return enderecoEntity;
     }
 
-    public Endereco update(Integer id, Endereco enderecoAtualizado) throws Exception {
-        Endereco enderecoRecuperado = listaEndereco.stream()
-                .filter(contato -> contato.getIdEndereco().equals(id))
+    public EnderecoEntity update(Integer id, EnderecoEntity enderecoEntityAtualizado) throws Exception {
+        EnderecoEntity enderecoEntityRecuperado = listaEnderecoEntity.stream()
+                .filter(endereco -> endereco.getIdEndereco().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
-        enderecoRecuperado.setIdEndereco(id);
-        enderecoRecuperado.setIdPessoa(enderecoAtualizado.getIdPessoa());
-        enderecoRecuperado.setTipo(enderecoAtualizado.getTipo());
-        enderecoRecuperado.setLogradouro(enderecoAtualizado.getLogradouro());
-        enderecoRecuperado.setNumero(enderecoAtualizado.getNumero());
-        enderecoRecuperado.setComplemento(enderecoAtualizado.getComplemento());
-        enderecoRecuperado.setCep(enderecoAtualizado.getCep());
-        enderecoRecuperado.setCidade(enderecoAtualizado.getCidade());
-        enderecoRecuperado.setEstado(enderecoAtualizado.getEstado());
-        enderecoRecuperado.setPais(enderecoAtualizado.getPais());
-        return enderecoRecuperado;
+                .orElseThrow(() -> new RegraDeNegocioException("Endereço não encontrado"));
+        enderecoEntityRecuperado.setIdEndereco(id);
+        enderecoEntityRecuperado.setIdPessoa(enderecoEntityAtualizado.getIdPessoa());
+        enderecoEntityRecuperado.setTipo(enderecoEntityAtualizado.getTipo());
+        enderecoEntityRecuperado.setLogradouro(enderecoEntityAtualizado.getLogradouro());
+        enderecoEntityRecuperado.setNumero(enderecoEntityAtualizado.getNumero());
+        enderecoEntityRecuperado.setComplemento(enderecoEntityAtualizado.getComplemento());
+        enderecoEntityRecuperado.setCep(enderecoEntityAtualizado.getCep());
+        enderecoEntityRecuperado.setCidade(enderecoEntityAtualizado.getCidade());
+        enderecoEntityRecuperado.setEstado(enderecoEntityAtualizado.getEstado());
+        enderecoEntityRecuperado.setPais(enderecoEntityAtualizado.getPais());
+        return enderecoEntityRecuperado;
     }
 
     public void delete(Integer id) throws Exception {
-        Endereco enderecoRecuperado = listaEndereco.stream()
-                .filter(endereco -> endereco.getIdEndereco().equals(id))
+        EnderecoEntity enderecoEntityRecuperado = listaEnderecoEntity.stream()
+                .filter(enderecoEntity -> enderecoEntity.getIdEndereco().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
-        listaEndereco.remove(enderecoRecuperado);
+        listaEnderecoEntity.remove(enderecoEntityRecuperado);
     }
 
 }

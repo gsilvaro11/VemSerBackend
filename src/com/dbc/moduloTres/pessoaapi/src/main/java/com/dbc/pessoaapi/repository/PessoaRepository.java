@@ -1,9 +1,9 @@
 package com.dbc.pessoaapi.repository;
 
-import com.dbc.pessoaapi.entity.Pessoa;
+import com.dbc.pessoaapi.dto.PessoaDTO;
+import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,49 +14,56 @@ import java.util.stream.Collectors;
 
 @Repository
 public class PessoaRepository {
-    private static List<Pessoa> listaPessoas = new ArrayList<>();
+    private static List<PessoaEntity> listaPessoaEntity = new ArrayList<>();
     private AtomicInteger COUNTER = new AtomicInteger();
 
     public PessoaRepository() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); //18/10/2020
-        listaPessoas.add(new Pessoa(COUNTER.incrementAndGet() /*1*/, "Maicon Gerardi", LocalDate.parse("10/10/1990", formatter), "12345678910"));
-        listaPessoas.add(new Pessoa(COUNTER.incrementAndGet() /*2*/, "Charles Pereira", LocalDate.parse("08/05/1985", formatter), "12345678911"));
-        listaPessoas.add(new Pessoa(COUNTER.incrementAndGet() /*3*/, "Marina Oliveira", LocalDate.parse("30/03/1970", formatter), "12345678912"));
+        listaPessoaEntity.add(new PessoaEntity(COUNTER.incrementAndGet() /*1*/, "Maicon Gerardi", LocalDate.parse("10/10/1990", formatter), "12345678910"));
+        listaPessoaEntity.add(new PessoaEntity(COUNTER.incrementAndGet() /*2*/, "Charles Pereira", LocalDate.parse("08/05/1985", formatter), "12345678911"));
+        listaPessoaEntity.add(new PessoaEntity(COUNTER.incrementAndGet() /*3*/, "Marina Oliveira", LocalDate.parse("30/03/1970", formatter), "12345678912"));
     }
 
-    public Pessoa create(Pessoa pessoa) throws Exception{
-        pessoa.setIdPessoa(COUNTER.incrementAndGet());
-        listaPessoas.add(pessoa);
-        return pessoa;
+    public PessoaEntity create(PessoaEntity pessoaEntity) throws Exception{
+        pessoaEntity.setIdPessoa(COUNTER.incrementAndGet());
+        listaPessoaEntity.add(pessoaEntity);
+        return pessoaEntity;
     }
 
-    public List<Pessoa> list() {
-        return listaPessoas;
+    public List<PessoaEntity> list() {
+        return listaPessoaEntity;
     }
 
-    public Pessoa update(Integer id,
-                         Pessoa pessoaAtualizar) throws Exception {
-        Pessoa pessoaRecuperada = listaPessoas.stream()
-                .filter(pessoa -> pessoa.getIdPessoa().equals(id))
+    public PessoaEntity update(Integer id,
+                            PessoaEntity pessoaEntityAtualizado) throws Exception {
+        PessoaEntity pessoaRecuperada = listaPessoaEntity.stream()
+                .filter(pessoaDTO -> pessoaDTO.getIdPessoa().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Pessoa não econtrada"));
-        pessoaRecuperada.setCpf(pessoaAtualizar.getCpf());
-        pessoaRecuperada.setNome(pessoaAtualizar.getNome());
-        pessoaRecuperada.setDataNascimento(pessoaAtualizar.getDataNascimento());
+        pessoaRecuperada.setCpf(pessoaEntityAtualizado.getCpf());
+        pessoaRecuperada.setNome(pessoaEntityAtualizado.getNome());
+        pessoaRecuperada.setDataNascimento(pessoaEntityAtualizado.getDataNascimento());
         return pessoaRecuperada;
     }
 
     public void delete(Integer id) throws RegraDeNegocioException {
-        Pessoa pessoaRecuperada = listaPessoas.stream()
-                .filter(pessoa -> pessoa.getIdPessoa().equals(id))
+        PessoaEntity pessoaRecuperada = listaPessoaEntity.stream()
+                .filter(pessoaEntity -> pessoaEntity.getIdPessoa().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Pessoa não econtrada"));
-        listaPessoas.remove(pessoaRecuperada);
+        listaPessoaEntity.remove(pessoaRecuperada);
     }
 
-    public List<Pessoa> listByName(String nome) {
-        return listaPessoas.stream()
-                .filter(pessoa -> pessoa.getNome().toUpperCase().contains(nome.toUpperCase()))
+    public List<PessoaEntity> listByName(String nome) {
+        return listaPessoaEntity.stream()
+                .filter(pessoaEntity -> pessoaEntity.getNome().toUpperCase().contains(nome.toUpperCase()))
                 .collect(Collectors.toList());
+    }
+
+    public PessoaEntity listById(Integer idPessoa) throws RegraDeNegocioException{
+        return listaPessoaEntity.stream()
+                .filter(pessoaEntity -> pessoaEntity.getIdPessoa().equals(idPessoa))
+                .findFirst()
+                .orElseThrow(() -> new RegraDeNegocioException("Pessoa não econtrada"));
     }
 }

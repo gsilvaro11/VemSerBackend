@@ -14,12 +14,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/contato",
+							"raw": "{{url}}/contatoEntity",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"contato"
+								"contatoEntity"
 							]
 						}
 					},
@@ -31,12 +31,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/contato/bynumber?numero=102",
+							"raw": "{{url}}/contatoEntity/bynumber?numero=102",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"contato",
+								"contatoEntity",
 								"bynumber"
 							],
 							"query": [
@@ -56,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{                \r\n        \"tipoContato\": \"2\",\r\n        \"numero\": \"106\",\r\n        \"descricao\": \"novo contato para o id um\"\r\n}",
+							"raw": "{                \r\n        \"tipoContato\": \"2\",\r\n        \"numero\": \"106\",\r\n        \"descricao\": \"novo contatoEntity para o id um\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -64,12 +64,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/contato/1",
+							"raw": "{{url}}/contatoEntity/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"contato",
+								"contatoEntity",
 								"1"
 							]
 						}
@@ -91,12 +91,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/contato/2",
+							"raw": "{{url}}/contatoEntity/2",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"contato",
+								"contatoEntity",
 								"2"
 							]
 						}
@@ -104,17 +104,17 @@
 					"response": []
 				},
 				{
-					"name": "DELETE / contato",
+					"name": "DELETE / contatoEntity",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/contato/1",
+							"raw": "{{url}}/contatoEntity/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"contato",
+								"contatoEntity",
 								"1"
 							]
 						}
@@ -127,17 +127,17 @@
 			"name": "PESSOA",
 			"item": [
 				{
-					"name": "GET /pessoa",
+					"name": "GET /pessoaEntity",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/pessoa/byname?nome=maicon",
+							"raw": "{{url}}/pessoaEntity/byname?nome=maicon",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"pessoa",
+								"pessoaEntity",
 								"byname"
 							],
 							"query": [
@@ -151,7 +151,7 @@
 					"response": []
 				},
 				{
-					"name": "POST /pessoa",
+					"name": "POST /pessoaEntity",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -165,19 +165,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/pessoa",
+							"raw": "{{url}}/pessoaEntity",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"pessoa"
+								"pessoaEntity"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "PUT /pessoa/id",
+					"name": "PUT /pessoaEntity/id",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -191,12 +191,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/pessoa/9",
+							"raw": "{{url}}/pessoaEntity/9",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"pessoa",
+								"pessoaEntity",
 								"9"
 							]
 						}
@@ -204,17 +204,17 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /pessoa/id",
+					"name": "DELETE /pessoaEntity/id",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/pessoa/",
+							"raw": "{{url}}/pessoaEntity/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"pessoa",
+								"pessoaEntity",
 								""
 							]
 						}
@@ -232,12 +232,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/endereco",
+							"raw": "{{url}}/enderecoEntity",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"endereco"
+								"enderecoEntity"
 							]
 						}
 					},
@@ -249,14 +249,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/endereco/1/endereco",
+							"raw": "{{url}}/enderecoEntity/1/enderecoEntity",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"endereco",
+								"enderecoEntity",
 								"1",
-								"endereco"
+								"enderecoEntity"
 							]
 						}
 					},
@@ -268,14 +268,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/endereco/1/pessoa",
+							"raw": "{{url}}/enderecoEntity/1/pessoaEntity",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"endereco",
+								"enderecoEntity",
 								"1",
-								"pessoa"
+								"pessoaEntity"
 							]
 						}
 					},
@@ -287,12 +287,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/endereco/",
+							"raw": "{{url}}/enderecoEntity/",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"endereco",
+								"enderecoEntity",
 								""
 							]
 						}
@@ -314,12 +314,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/endereco/1",
+							"raw": "{{url}}/enderecoEntity/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"endereco",
+								"enderecoEntity",
 								"1"
 							]
 						}
@@ -341,12 +341,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/endereco/1",
+							"raw": "{{url}}/enderecoEntity/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"endereco",
+								"enderecoEntity",
 								"1"
 							]
 						}
