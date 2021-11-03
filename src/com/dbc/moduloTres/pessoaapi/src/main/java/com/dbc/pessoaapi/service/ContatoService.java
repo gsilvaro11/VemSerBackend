@@ -17,11 +17,9 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class ContatoService {
-
     private final ContatoRepository contatoRepository;
     private final PessoaRepository pessoaRepository;
     private final ObjectMapper objectMapper;
-
 
     public ContatoDTO create(Integer id, ContatoCreateDTO contatoCreateDTO) throws RegraDeNegocioException {
         ContatoEntity contaCriadaEntity = objectMapper.convertValue(contatoCreateDTO, ContatoEntity.class);
