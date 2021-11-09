@@ -2,18 +2,25 @@ package com.dbc.pessoaapi.controller;
 
 import com.dbc.pessoaapi.dto.PessoaCreateDTO;
 import com.dbc.pessoaapi.dto.PessoaDTO;
+import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
+import com.dbc.pessoaapi.repository.PessoaRepository;
 import com.dbc.pessoaapi.service.PessoaService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 
@@ -24,6 +31,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PessoaController {
     private final PessoaService pessoaService;
+    private final PessoaRepository pessoaRepository;
+
 
     @ApiOperation(value = "Cria uma pessoa")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Pessoa criada"),
@@ -85,4 +94,25 @@ public class PessoaController {
 
         log.info("Deletado com sucesso");
     }
+
+    @GetMapping("/get-by-nome")
+    public List<PessoaEntity> findByNomeContainingIgnoreCase(@RequestParam("nome")
+               String nome){
+        return pessoaRepository.findByNomeContainingIgnoreCase(nome);
+    }
+
+    @GetMapping("/get-by-cpf")
+    public List<PessoaEntity> findByCpfContainingIgnoreCase(@RequestParam("cpf")
+                                                                     String cpf){
+        return pessoaRepository.findByCpfContainingIgnoreCase(cpf);
+    }
+
+    @GetMapping("/find-by-data-nascimento")
+    public List<PessoaEntity> findByDataNacismentoBetween(
+            @RequestParam("dataInicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio,
+            @RequestParam("dataFim") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataFim){
+
+        return pessoaRepository.findByDataNascimentoBetween(dataInicio, dataFim);
+    }
+
 }
