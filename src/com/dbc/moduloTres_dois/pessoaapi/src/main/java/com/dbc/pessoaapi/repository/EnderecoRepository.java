@@ -24,4 +24,9 @@ public interface EnderecoRepository extends JpaRepository<EnderecoEntity, Intege
             "where ep.PAIS = ?1 or ep.CIDADE = ?1 ", nativeQuery = true)
     List<EnderecoEntity> enderecoCidadePais(String paisCidade);
 
+    @Query(value = "select * from ENDERECO_PESSOA ep " +
+            "where ep.COMPLEMENTO is  null", nativeQuery = true)
+    List<EnderecoEntity> enderecoSemComplemento();
+
 }
+

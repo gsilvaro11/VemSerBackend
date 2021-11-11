@@ -130,6 +130,10 @@ public class PessoaController {
         return pessoaRepository.pessoaComEndereco();
     }
 
+    @GetMapping("/pessoa-com-endereco-query-nativa")
+    public List<PessoaEntity> pessoaSemEndereco(){
+        return pessoaRepository.pessoaSemEndereco();
+    }
 
 
 }

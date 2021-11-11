@@ -81,4 +81,10 @@ public class ContatoController {
     public List<ContatoEntity> contatoPorTipo(@RequestParam("tipoContato") TipoContato tipoContato) {
         return contatoRepository.contatoPorTipo(tipoContato);
     }
+
+    @GetMapping("/contato-por-id-pessoa")
+    public List<ContatoEntity> contatoPotIdPessoa(@RequestParam("idPessoa") Integer idPessoa){
+        return contatoRepository.contatoPotIdPessoa(idPessoa);
+    }
+
 }

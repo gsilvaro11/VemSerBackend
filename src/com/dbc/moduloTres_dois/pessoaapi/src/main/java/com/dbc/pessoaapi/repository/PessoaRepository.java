@@ -20,9 +20,11 @@ public interface PessoaRepository extends JpaRepository<PessoaEntity, Integer> {
     List<PessoaEntity> pessoaPorDataNacismento(LocalDate inicio, LocalDate fim);
 
     @Query("select p from PESSOA p " +
-            "left join p.enderecos e")
+            "inner join p.enderecos e")
     List<PessoaEntity> pessoaComEndereco();
 
-
-
+    @Query(value = "select * from PESSOA p " +
+            "LEFT JOIN PESSOA_X_PESSOA_ENDERECO pxp ON (pxp.ID_PESSOA = p.ID_PESSOA) " +
+            "WHERE pxp.ID_ENDERECO IS null", nativeQuery = true)
+    List<PessoaEntity> pessoaSemEndereco();
 }

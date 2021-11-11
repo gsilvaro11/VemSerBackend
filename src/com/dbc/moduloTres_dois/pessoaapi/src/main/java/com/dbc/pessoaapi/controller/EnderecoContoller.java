@@ -104,4 +104,9 @@ public class EnderecoContoller {
         return enderecoRepository.enderecoCidadePais(paisCidade);
     }
 
+    @GetMapping("/endereco-sem-complemento")
+    public List<EnderecoEntity> enderecoSemComplemento(){
+        return enderecoRepository.enderecoSemComplemento();
+    }
+
 }
