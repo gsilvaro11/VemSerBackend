@@ -1,7 +1,9 @@
 package com.dbc.pessoaapi.controller;
 
+import com.dbc.pessoaapi.dto.PessoaContatoDTO;
 import com.dbc.pessoaapi.dto.PessoaCreateDTO;
 import com.dbc.pessoaapi.dto.PessoaDTO;
+import com.dbc.pessoaapi.dto.PessoaEnderecoDTO;
 import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.PessoaRepository;
@@ -102,17 +104,32 @@ public class PessoaController {
     }
 
     @GetMapping("/get-by-cpf")
-    public List<PessoaEntity> findByCpfContainingIgnoreCase(@RequestParam("cpf")
+    public PessoaEntity findByCpf(@RequestParam("cpf")
                                                                      String cpf){
-        return pessoaRepository.findByCpfContainingIgnoreCase(cpf);
+        return pessoaRepository.findByCpf(cpf);
     }
 
     @GetMapping("/find-by-data-nascimento")
-    public List<PessoaEntity> findByDataNacismentoBetween(
+    public List<PessoaEntity> pessoaPorDataNacismento(
             @RequestParam("dataInicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicio,
             @RequestParam("dataFim") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataFim){
 
-        return pessoaRepository.findByDataNascimentoBetween(dataInicio, dataFim);
+        return pessoaRepository.pessoaPorDataNacismento(dataInicio, dataFim);
     }
+
+    @GetMapping("/lista-by-contato")
+    public List<PessoaContatoDTO> getByContato(){
+        return pessoaService.getByContato();
+    }
+
+    @GetMapping("/lista-by-endereco")
+    public List<PessoaEnderecoDTO> getByEndereco(){return pessoaService.getByEndereco();}
+
+    @GetMapping("/pessoa-com-endereco")
+    public List<PessoaEntity> pessoaComEndereco(){
+        return pessoaRepository.pessoaComEndereco();
+    }
+
+
 
 }

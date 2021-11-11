@@ -4,7 +4,9 @@ package com.dbc.pessoaapi.controller;
 import com.dbc.pessoaapi.dto.EnderecoCreateDTO;
 import com.dbc.pessoaapi.dto.EnderecoDTO;
 
+import com.dbc.pessoaapi.entity.EnderecoEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
+import com.dbc.pessoaapi.repository.EnderecoRepository;
 import com.dbc.pessoaapi.service.EnderecoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -23,6 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EnderecoContoller {
     private final EnderecoService enderecoService;
+    private final EnderecoRepository enderecoRepository;
 
     @GetMapping
     @ApiOperation(value = "Lista de endereços")
@@ -41,17 +44,6 @@ public class EnderecoContoller {
     public EnderecoDTO listByEndereco(@PathVariable("idEndereco") Integer idEndereco) throws Exception {
         return enderecoService.listByEndereco(idEndereco);
     }
-//
-//    @ApiOperation(value = "Lista endereço por pessoa")
-//    @ApiResponses(value = {
-//            @ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
-//            @ApiResponse(code = 500, message = "Foi gerada um execeção")
-//    })
-//    @GetMapping("/{idPessoa}/pessoa")
-//    public List<EnderecoDTO> listByPessoa(@PathVariable("idPessoa") Integer idPessoa) throws Exception {
-//        return enderecoService.listByPessoa(idPessoa);
-//    }
-
 
     @PutMapping("/{idEndereco}")
     @ApiOperation(value = "Atualiza endereços")
@@ -96,4 +88,20 @@ public class EnderecoContoller {
         enderecoService.delete(id);
         log.info("Deletado com sucesso");
     }
+
+    @GetMapping("/endereco-por-pais")
+    public List<EnderecoEntity> enderecoPorPais(@RequestParam("pais") String pais){
+        return enderecoRepository.enderecoPorPais(pais.toLowerCase());
+    }
+
+    @GetMapping("/endereco-por-pessoa")
+    public List<EnderecoEntity> enderecoPorPessoa(@RequestParam("idPessoa") Integer idPessoa){
+        return enderecoRepository.endercoPorPessoa(idPessoa);
+    }
+
+    @GetMapping("/endereco-cidade-pais")
+    public List<EnderecoEntity> enderecoCidadePais(@RequestParam("paisCidade") String paisCidade){
+        return enderecoRepository.enderecoCidadePais(paisCidade);
+    }
+
 }

@@ -1,14 +1,15 @@
 package com.dbc.pessoaapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity(name = "PESSOA")
 public class PessoaEntity {
 
@@ -22,5 +23,18 @@ public class PessoaEntity {
     private String email;
     private LocalDate dataNascimento;
     private String cpf;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "pessoaEntity", fetch = FetchType.LAZY)
+    private Set<ContatoEntity> contatos;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "Pessoa_x_Pessoa_Endereco",
+            joinColumns = @JoinColumn(name = "id_pessoa"),
+            inverseJoinColumns = @JoinColumn(name = "id_endereco")
+    )
+    private Set<EnderecoEntity> enderecos;
 
 }

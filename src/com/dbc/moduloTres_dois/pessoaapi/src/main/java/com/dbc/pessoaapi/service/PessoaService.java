@@ -1,7 +1,6 @@
 package com.dbc.pessoaapi.service;
 
-import com.dbc.pessoaapi.dto.PessoaCreateDTO;
-import com.dbc.pessoaapi.dto.PessoaDTO;
+import com.dbc.pessoaapi.dto.*;
 import com.dbc.pessoaapi.entity.PessoaEntity;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
 import com.dbc.pessoaapi.repository.PessoaRepository;
@@ -54,6 +53,36 @@ public class PessoaService {
         PessoaEntity entity = objectMapper.convertValue(pessoaDeletada, PessoaEntity.class);
         pessoaRepository.delete(entity);
 
+    }
+
+    public List<PessoaContatoDTO> getByContato(){
+        return pessoaRepository.findAll().stream()
+                .map(x -> {
+                    PessoaContatoDTO pessoaContatoDTO = objectMapper.convertValue(x, PessoaContatoDTO.class);
+                    pessoaContatoDTO.setListaContato(x.getContatos().stream()
+                            .map(contato -> {
+                                ContatoDTO contatoDTO = objectMapper.convertValue(contato, ContatoDTO.class);
+                                return contatoDTO;
+                            })
+                            .collect(Collectors.toList()));
+                    return pessoaContatoDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
+    public List<PessoaEnderecoDTO> getByEndereco(){
+        return pessoaRepository.findAll().stream()
+                .map(x -> {
+                    PessoaEnderecoDTO pessoaEnderecoDTO = objectMapper.convertValue(x, PessoaEnderecoDTO.class);
+                    pessoaEnderecoDTO.setListaDeEnderecos(x.getEnderecos().stream()
+                            .map(endereco -> {
+                                EnderecoDTO enderecoDTO = objectMapper.convertValue(endereco, EnderecoDTO.class);
+                                return enderecoDTO;
+                            })
+                            .collect(Collectors.toList()));
+                    return pessoaEnderecoDTO;
+                })
+                .collect(Collectors.toList());
     }
 
 

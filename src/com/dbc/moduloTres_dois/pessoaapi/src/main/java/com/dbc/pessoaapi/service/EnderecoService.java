@@ -39,12 +39,6 @@ public class EnderecoService {
         return dto;
     }
 
-//    public List<EnderecoDTO> listByPessoa(Integer idPessoa) throws Exception{
-//        return enderecoRepository.listByPessoa(idPessoa).stream()
-//                .map(x -> objectMapper.convertValue(x, EnderecoDTO.class))
-//                .collect(Collectors.toList());
-//    }
-
     public EnderecoDTO update(Integer idEndereco, EnderecoCreateDTO enderecoCreateDTO) throws Exception{
         findById(idEndereco);
         EnderecoEntity entity = objectMapper.convertValue(enderecoCreateDTO, EnderecoEntity.class);

@@ -1,17 +1,19 @@
 package com.dbc.pessoaapi.dto;
 
+import com.dbc.pessoaapi.entity.ContatoEntity;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class PessoaDTO {
+public class PessoaContatoDTO {
     private Integer idPessoa;
 
     @NotNull(message = "Não pode ser nulo")
@@ -34,6 +36,8 @@ public class PessoaDTO {
     @Size(max = 11, min = 11)
     @ApiModelProperty(value = "Cpf da pessoa")
     private String cpf;
+
+    private List<ContatoDTO> listaContato;
 
 
 }

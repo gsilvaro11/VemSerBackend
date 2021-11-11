@@ -1,14 +1,15 @@
 package com.dbc.pessoaapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity(name = "CONTATO")
-public class ContatoEntity {
+public class ContatoEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONTATO_SEQ")
@@ -16,8 +17,10 @@ public class ContatoEntity {
     @Column(name = "id_contato")
     private Integer idContato;
 
-    @Column(name = "id_pessoa")
-    private Integer idPessoa;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_pessoa", referencedColumnName = "id_pessoa")
+    private PessoaEntity pessoaEntity;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "tipo")
@@ -25,4 +28,7 @@ public class ContatoEntity {
 
     private String numero;
     private String descricao;
+
+
+
 }

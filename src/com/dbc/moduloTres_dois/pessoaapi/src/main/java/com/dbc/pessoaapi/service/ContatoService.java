@@ -27,7 +27,7 @@ public class ContatoService {
                 .filter(x -> x.getIdPessoa().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new RegraDeNegocioException("Contato não encontrado"));
-        contaCriadaEntity.setIdPessoa(id);
+        contaCriadaEntity.setPessoaEntity(pessoaEntity);
         ContatoEntity atualizado = contatoRepository.save(contaCriadaEntity);
         ContatoDTO dto = objectMapper.convertValue(atualizado, ContatoDTO.class);
         return null;
@@ -41,10 +41,8 @@ public class ContatoService {
 
     public ContatoDTO update(Integer id, ContatoCreateDTO contatoCreateDTO) throws Exception {
         ContatoDTO contato = findById(id);
-
         ContatoEntity entity = objectMapper.convertValue(contatoCreateDTO, ContatoEntity.class);
         entity.setIdContato(id);
-        entity.setIdPessoa(contato.getIdPessoa());
         ContatoEntity atualizado = contatoRepository.save(entity);
         ContatoDTO dto = objectMapper.convertValue(atualizado, ContatoDTO.class);
         return dto;
@@ -55,6 +53,8 @@ public class ContatoService {
         ContatoEntity entity = objectMapper.convertValue(dto, ContatoEntity.class);
         contatoRepository.delete(entity);
     }
+
+
 
     private ContatoDTO findById(Integer id) throws RegraDeNegocioException{
         ContatoEntity entity = contatoRepository.findById(id)

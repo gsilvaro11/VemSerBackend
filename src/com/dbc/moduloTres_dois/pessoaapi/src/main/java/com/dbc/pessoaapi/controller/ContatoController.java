@@ -2,7 +2,10 @@ package com.dbc.pessoaapi.controller;
 
 import com.dbc.pessoaapi.dto.ContatoDTO;
 import com.dbc.pessoaapi.dto.ContatoCreateDTO;
+import com.dbc.pessoaapi.entity.ContatoEntity;
+import com.dbc.pessoaapi.entity.TipoContato;
 import com.dbc.pessoaapi.exceptions.RegraDeNegocioException;
+import com.dbc.pessoaapi.repository.ContatoRepository;
 import com.dbc.pessoaapi.service.ContatoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -23,6 +26,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ContatoController {
     private final ContatoService contatoService;
+    private final ContatoRepository contatoRepository;
 
     @ApiOperation(value = "Lista contatos")
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Você não tem permissão para acessar este recurso"),
@@ -71,5 +75,10 @@ public class ContatoController {
         ContatoDTO contatoDTO = contatoService.update(id, contatoDtoAtulizado);
         log.info("Atualizado com sucesso");
         return contatoDTO;
+    }
+
+    @GetMapping("/contato-por-tipo")
+    public List<ContatoEntity> contatoPorTipo(@RequestParam("tipoContato") TipoContato tipoContato) {
+        return contatoRepository.contatoPorTipo(tipoContato);
     }
 }
