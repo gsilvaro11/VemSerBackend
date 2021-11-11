@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @ToString
 public class EnderecoDTO {
     private Integer idEndereco;
-//    private Integer idPessoa;
+    private Integer idPessoa;
 
     @NotNull(message = "Não pode ser nulo")
     @ApiModelProperty(value = "Tipo de endereço")

@@ -135,5 +135,14 @@ public class PessoaController {
         return pessoaRepository.pessoaSemEndereco();
     }
 
+    @GetMapping("/pessoas-com-contato")
+    public List<PessoaContatoDTO> pessoasComContato (@RequestParam(required = false) Integer idPessoa) throws RegraDeNegocioException {
+        return pessoaService.pessoasComContato(idPessoa);
+    }
+
+    @GetMapping("/pessoas-com-endereco")
+    public List<PessoaEnderecoDTO> pessoasComEndereco(@RequestParam(required = false) Integer idPessoa) throws RegraDeNegocioException {
+        return pessoaService.pessoasComEndereco(idPessoa);
+    }
 
 }
