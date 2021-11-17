@@ -156,5 +156,6 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:5.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.5.3" level="project" />
+    <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.9.1" level="project" />
   </component>
 </module>

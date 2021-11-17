@@ -12,10 +12,10 @@ public class SimpleErrorDecode implements ErrorDecoder {
     @Override
     public Exception decode(String s, Response response) {
         Response.Body body = response.body();
-        if(body == null){
+        if (body == null){
             return new UnexpectedException("Erro inesperado");
-
         }
+
         try {
             String bodyString = IOUtils.toString(body.asInputStream());
             switch (response.status()){
@@ -26,8 +26,7 @@ public class SimpleErrorDecode implements ErrorDecoder {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            return e;
         }
-
-        return null;
     }
 }
