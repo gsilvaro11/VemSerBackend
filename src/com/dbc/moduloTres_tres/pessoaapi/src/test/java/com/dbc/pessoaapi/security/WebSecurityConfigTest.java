@@ -7,6 +7,6 @@ public class WebSecurityConfigTest {
 
     @Test
     public void generatePass() {
-        System.out.println(new BCryptPasswordEncoder().encode("Gui123"));
+        System.out.println(new BCryptPasswordEncoder().encode("gui123"));
     }
 }
