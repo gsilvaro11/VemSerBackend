@@ -1,0 +1,76 @@
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("619bfe00636eac2519a34ab4"),
+     '1': ObjectId("619bfe00636eac2519a34ab5"),
+     '2': ObjectId("619bfe00636eac2519a34ab6"),
+     '3': ObjectId("619bfe00636eac2519a34ab7"),
+     '4': ObjectId("619bfe00636eac2519a34ab8"),
+     '5': ObjectId("619bfe00636eac2519a34ab9"),
+     '6': ObjectId("619bfe00636eac2519a34aba"),
+     '7': ObjectId("619bfe00636eac2519a34abb"),
+     '8': ObjectId("619bfe00636eac2519a34abc"),
+     '9': ObjectId("619bfe00636eac2519a34abd"),
+     '10': ObjectId("619bfe00636eac2519a34abe"),
+     '11': ObjectId("619bfe00636eac2519a34abf") } }
+
+db.homework01.find()
+
+{ _id: ObjectId("619bfe00636eac2519a34ab4"),
+  valorUnitario: 14.5,
+  descricao: 'GUARANA 1 LITRO',
+  tipoProduto: 'BEBIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34ab5"),
+  valorUnitario: 20,
+  descricao: 'PIZZA CALABRESA',
+  tipoProduto: 'COMIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34ab6"),
+  valorUnitario: 10,
+  descricao: 'PEPSI 1 LITRO',
+  tipoProduto: 'BEBIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34ab7"),
+  valorUnitario: 9.5,
+  descricao: 'BRAHMA',
+  tipoProduto: 'BEBIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34ab8"),
+  valorUnitario: 6,
+  descricao: 'BRIGADEIRO',
+  tipoProduto: 'BEBIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34ab9"),
+  valorUnitario: 4.5,
+  descricao: 'ÁGUA 600 ML',
+  tipoProduto: 'BEBIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34aba"),
+  valorUnitario: 20,
+  descricao: 'PIZZA CHOCOLATE',
+  tipoProduto: 'COMIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34abb"),
+  valorUnitario: 1,
+  descricao: 'Skol Beats',
+  tipoProduto: 'COMIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34abc"),
+  valorUnitario: 1,
+  descricao: 'Skol',
+  tipoProduto: 'COMIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34abd"),
+  valorUnitario: 1,
+  descricao: 'Skol',
+  tipoProduto: 'COMIDA' }
+
+{ _id: ObjectId("619bfe00636eac2519a34abe"),
+  valorUnitario: 10,
+  descricao: 'coca',
+  tipoProduto: 'BEBIDA' }
+  
+{ _id: ObjectId("619bfe00636eac2519a34abf"),
+  valorUnitario: 100,
+  descricao: 'string',
+  tipoProduto: 'BEBIDA' }
