@@ -1,5 +1,7 @@
 package com.dbc.chatkafka.kafka;
 
+
+import com.dbc.chatkafka.dto.ListaMensagemDTO;
 import com.dbc.chatkafka.dto.MensagemDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -52,8 +54,23 @@ public class Producer {
     }
 
 
-    public void sendMessageDTO(MensagemDTO mensagemDTO) throws JsonProcessingException {
-        String payload = objectMapper.writeValueAsString(mensagemDTO);
-        send(payload, topicoGeral);
+//    public void sendMessageDTO(MensagemDTO mensagemDTO) throws JsonProcessingException {
+//        String payload = objectMapper.writeValueAsString(mensagemDTO);
+//        send(payload, topicoGeral);
+//    }
+
+    public void sendMessageDTO(ListaMensagemDTO listaMensagemDTO) throws JsonProcessingException {
+        if (listaMensagemDTO.getUsuario().isEmpty()) {
+            String payload = objectMapper.writeValueAsString(listaMensagemDTO.getMensagemDTO());
+            send(payload, topicoGeral);
+        }
+
+        for(String usuario : listaMensagemDTO.getUsuario()) {
+            String topico = "chat-"+usuario;
+            String payload = objectMapper.writeValueAsString(listaMensagemDTO.getMensagemDTO());
+            send(payload, topico);
+        }
+
     }
+
 }

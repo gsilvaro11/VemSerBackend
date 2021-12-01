@@ -1,6 +1,7 @@
 package com.dbc.chatkafka.controller;
 
 
+import com.dbc.chatkafka.dto.ListaMensagemDTO;
 import com.dbc.chatkafka.dto.MensagemDTO;
 import com.dbc.chatkafka.kafka.Producer;
 import com.dbc.chatkafka.service.ConsumerService;
@@ -18,8 +19,9 @@ public class ProdutorController {
     private final ConsumerService consumerService;
 
 
-    @PostMapping("/veiculo-sensor")
-    public void inserirAlunoKafka(@RequestBody MensagemDTO mensagemDTO) throws JsonProcessingException {
-        producer.sendMessageDTO(mensagemDTO);
+    @PostMapping("/chat")
+    public void enviarMensagem(@RequestBody ListaMensagemDTO listaMensagemDTO) throws JsonProcessingException {
+        producer.sendMessageDTO(listaMensagemDTO);
     }
+
 }

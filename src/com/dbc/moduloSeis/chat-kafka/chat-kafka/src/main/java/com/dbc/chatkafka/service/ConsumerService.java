@@ -12,6 +12,7 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Component
@@ -20,6 +21,7 @@ import java.util.List;
 public class ConsumerService {
     private final KafkaTemplate<String, String> stringKafkaTemplate;
     private final ObjectMapper objectMapper;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
 
     @KafkaListener(
@@ -32,7 +34,7 @@ public class ConsumerService {
                            @Header(KafkaHeaders.OFFSET) Long offset) throws JsonProcessingException {
         MensagemDTO mensagemDTO = objectMapper.readValue(mensagem, MensagemDTO.class);
 
-        log.info("{} [{}] {}", mensagemDTO.getDataCriacao() , mensagemDTO.getUsuario(), mensagemDTO.getMensagem());
+        log.info("{} [{}] {}", formatter.format(mensagemDTO.getDataCriacao()) , mensagemDTO.getUsuario(), mensagemDTO.getMensagem());
 
     }
 
@@ -45,8 +47,7 @@ public class ConsumerService {
                              @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
                              @Header(KafkaHeaders.OFFSET) Long offset) throws JsonProcessingException {
         MensagemDTO mensagemDTO = objectMapper.readValue(mensagem, MensagemDTO.class);
-
-        log.info("MENSAGEM LIDA: '{}', CHAVE: '{}', OFFSET: '{}'", mensagemDTO, key, offset);
+        log.info("{} [{}] {}", formatter.format(mensagemDTO.getDataCriacao()) , mensagemDTO.getUsuario(), mensagemDTO.getMensagem());
 
     }
 
