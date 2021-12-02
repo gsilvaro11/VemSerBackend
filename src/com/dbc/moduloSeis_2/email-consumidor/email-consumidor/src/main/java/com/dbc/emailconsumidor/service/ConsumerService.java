@@ -1,6 +1,6 @@
 package com.dbc.emailconsumidor.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.dbc.emailconsumidor.dto.EnviaEmailDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
-import com.dbc.emailconsumidor.dto.EnviaEmailDTO;
+
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -37,6 +37,7 @@ public class ConsumerService {
                            @Header(KafkaHeaders.OFFSET) Long offset) throws IOException, MessagingException, TemplateException {
         EnviaEmailDTO enviaEmailDTO = objectMapper.readValue(mensagem, EnviaEmailDTO.class);
         emailService.enviaEmail(enviaEmailDTO);
+
         log.info("{} [{}] {}", enviaEmailDTO.getAssunto(), enviaEmailDTO.getDestinatario(), enviaEmailDTO.getTexto());
 
     }

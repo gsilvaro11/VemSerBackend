@@ -3,20 +3,17 @@ package com.dbc.emailconsumidor.service;
 
 import com.dbc.emailconsumidor.dto.EnviaEmailDTO;
 import freemarker.template.Configuration;
-import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
 
 @Component
 @RequiredArgsConstructor
@@ -35,15 +32,9 @@ public class EmailService {
         helper.setFrom(remetente);
         helper.setTo(enviaEmailDTO.getDestinatario());
         helper.setSubject("Usuario cadastrado");
-        Template template = configuration.getTemplate("email-template.ftl");
-        Map<String, Object> dados = new HashMap<>();
-        dados.put("Destinatario", enviaEmailDTO.getDestinatario());
-        dados.put("Assunto", enviaEmailDTO.getAssunto());
-        dados.put("Texto", enviaEmailDTO.getTexto());
-
-        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, dados);
-        helper.setText(html, true);
+        helper.setText(enviaEmailDTO.getTexto(), true);
         emailSender.send(mimeMessage);
+
         return enviaEmailDTO;
     }
 
