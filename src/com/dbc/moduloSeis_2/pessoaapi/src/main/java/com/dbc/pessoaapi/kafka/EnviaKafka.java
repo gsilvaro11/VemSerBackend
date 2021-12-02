@@ -29,9 +29,12 @@ public class EnviaKafka {
         String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, dados);
 
         EnviaEmailDTO enviaEmailDTO = new EnviaEmailDTO();
+
         enviaEmailDTO.setAssunto("Envio de mensagem!");
         enviaEmailDTO.setDestinatario(pessoaEntity.getEmail());
         enviaEmailDTO.setTexto(html);
+
+        //envia pro kafka
         producer.sendMessageDTO(enviaEmailDTO);
 
     }

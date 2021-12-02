@@ -16,15 +16,16 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class MeuNovoSchedulerCron {
-    private final EnviaKafka emailService;
+    private final EnviaKafka enviaKafka;
     private final PessoaRepository pessoaRepository;
 
-    @Scheduled(cron = "0 32-34 20,21 * * *")
+    @Scheduled(cron = "0 45-48 13,21 * * *")
     public void meuPrimeiroScheduler() throws InterruptedException, MessagingException, TemplateException, IOException {
-        List<PessoaEntity> pessoas = pessoaRepository.pessoaSemEndereco();
+        List<PessoaEntity> pessoas = pessoaRepository.findAll();
+
         if(!pessoas.isEmpty()){
             for(PessoaEntity pessoa : pessoas){
-                emailService.enviaKafka(pessoa,"email-template.ftl");
+                enviaKafka.enviaKafka(pessoa,"email-templateDois.ftl");
             }
         }
     }
